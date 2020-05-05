@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package ssi;
+
+service SSI {
+    rpc CreateSelfSovereignIdentity (Issuer) returns (Identity) {}
+}
+
+message Issuer {
+    string seed = 1;
+    string password = 2;
+}
+
+message Identity {
+    string seed = 1;
+    string password = 2;
+    string did = 3;
+}
