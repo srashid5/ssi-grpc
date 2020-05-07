@@ -3,16 +3,24 @@ syntax = "proto3";
 package ssi;
 
 service SSI {
-    rpc CreateSelfSovereignIdentity (Issuer) returns (Identity) {}
+    rpc CreateSelfSovereignIdentity (Empty) returns (Identity) {}
+    rpc IssueCredential (IssuerSubject) returns (Credential) {}
 }
 
-message Issuer {
-    string seed = 1;
-    string password = 2;
+message Empty {}
+
+message IssuerSubject {
+    string issuerSeed = 1;
+    string issuerPassword = 2;
+    string subjectDID = 3;
 }
 
 message Identity {
     string seed = 1;
     string password = 2;
-    string did = 3;
+    string DID = 3;
+}
+
+message Credential {
+    string credential = 1;
 }
